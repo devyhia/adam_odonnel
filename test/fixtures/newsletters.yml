@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  email: MyString
+  birthdate: 2014-10-03
+  zip: 1
+  country: MyString
+  has_mortgage_news: false
+  has_interest_rate_updates: false
+  has_special_events: false
+
+two:
+  name: MyString
+  email: MyString
+  birthdate: 2014-10-03
+  zip: 1
+  country: MyString
+  has_mortgage_news: false
+  has_interest_rate_updates: false
+  has_special_events: false

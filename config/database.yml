@@ -19,6 +19,7 @@ development:
   encoding: unicode
   database: adam_odonnel_development
   pool: 5
+  host: localhost
   username: postgres
   password:
 
@@ -48,6 +49,7 @@ test:
   encoding: unicode
   database: adam_odonnel_test
   pool: 5
+  host: localhost
   username: postgres
   password:
 

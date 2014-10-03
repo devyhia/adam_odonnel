@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  what: MyString
+  what_more: MyText
+  image: 
+  when: 2014-10-03 00:14:37
+
+two:
+  what: MyString
+  what_more: MyText
+  image: 
+  when: 2014-10-03 00:14:37
