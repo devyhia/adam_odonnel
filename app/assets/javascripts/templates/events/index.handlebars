@@ -1,0 +1,17 @@
+<h3>Events</h3>
+{{#if events_ready}}
+<div>
+{{#each events}}
+<div class="media">
+	{{#link-to 'events.show' id class="pull-left"}}
+    <img class="media-object" src="{{image}}">
+  	{{/link-to}}
+	<div class="media-body">
+		<h4 class="media-heading">{{what}}</h4>
+	</div>
+</div>
+{{/each}}
+</div>
+{{else}}
+{{loading-ticker}}
+{{/if}}

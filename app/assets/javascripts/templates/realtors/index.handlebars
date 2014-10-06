@@ -1,0 +1,10 @@
+<h3>Realtors</h3>
+{{#if realtors_ready}}
+	<div class="list-group">
+	{{#each realtors}}
+	    {{#link-to 'realtors.show' id class='list-group-item'}}{{title}}{{/link-to}}
+	{{/each}}
+	</div>
+{{else}}
+	{{loading-ticker}}
+{{/if}}

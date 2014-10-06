@@ -12,5 +12,25 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+//= require jquery
+//= require handlebars
+//= require ember
+//= require ember-data
+//= require_self
+//= require_tree ./icheck
+//= require ./adam_odonnel
+
+function guid() {
+  function s4() {
+    return Math.floor((1 + Math.random()) * 0x10000)
+               .toString(16)
+               .substring(1);
+  }
+  return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+         s4() + '-' + s4() + s4() + s4();
+}
+
+// for more details see: http://emberjs.com/guides/application/
+AdamOdonnel = Ember.Application.create();
+
 //= require_tree .

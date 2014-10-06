@@ -1,4 +1,17 @@
 AdamOdonnel::Application.routes.draw do
+  root to: 'home#index'
+  
+  # namespace :api, :path => "/api", :defaults => {:format => :json} do
+    # get ':action', constraints: { action: /(all_events|all_realtors)/ }
+    # post ':action', constraints: { action: /signup_newsletter/ }
+  # end
+
+  scope '/api' do
+    resources :realtors
+    resources :newsletters
+    resources :events
+  end
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
