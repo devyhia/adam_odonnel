@@ -41,6 +41,8 @@ gem 'thin'
 
 gem 'model_serializer', '~> 0.0.2'
 
+gem 'indexable_attribute'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

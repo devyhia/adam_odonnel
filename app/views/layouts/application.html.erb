@@ -3,15 +3,51 @@
 <head>
   <title>AdamOdonnel</title>
   <%= stylesheet_link_tag    "application", media: "all" %>
+  <%= render 'shared/navbar_header_handlebars' %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <link href="//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/lumen/bootstrap.min.css" rel="stylesheet">
   <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
 </head>
 <body>
+	<% PageTemplate.all.each do |t| %>
+	<script type="text/x-handlebars" data-template-name="<%= t.link %>">
+	  <% if t.page_type == :static %>
+      <%= t.content.html_safe %>
+    <% elsif t.page_type == :form %>
+      <h3><%= t.title %></h3>
+      <form id='dForm'>
+      <% t.form_items.each do |i| %>
+      <% id = SecureRandom.hex %>
+      <div class="form-group">
+        <label for="<%= id %>"><%= i.name %></label>
+        <% case i.tag %>
+        <% when :textfield %>
+        <input name='<%= i.name %>' id='<%= id %>' placeholder='<%= i.placeholder %>' class="form-control" />
+        <% when :select %>
+        <select name='<%= i.name %>' id='<%= id %>' placeholder='<%= i.placeholder %>' class='form-control'>
+          <% i.data.each do |v| %>
+          <option><%= v %></option>
+          <% end %>
+        </select>
+        <% end %>
+      </div>
+      <% end %>
+      </form>
+    <% end %>
+	</script>
+	<% end %>
+  <script type="text/javascript">
+  AdamOdonnel.Router.map(function() {
+    <% PageTemplate.all.each do |temp| %> 
+    this.resource('<%= temp.link %>');
+    <% end %> 
+  });
+  </script>
 
-<%= yield %>
+	<%= yield %>
 
 </body>
 </html>

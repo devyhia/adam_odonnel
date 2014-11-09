@@ -1,10 +1,13 @@
 AdamOdonnel::Application.routes.draw do
   root to: 'home#index'
   
-  # namespace :api, :path => "/api", :defaults => {:format => :json} do
-    # get ':action', constraints: { action: /(all_events|all_realtors)/ }
-    # post ':action', constraints: { action: /signup_newsletter/ }
-  # end
+  namespace :admin, :path => "/admin" do
+    resources :events
+    resources :realtors
+    resources :newsletters
+    resources :pages
+    resources :forms
+  end
 
   scope '/api' do
     resources :realtors

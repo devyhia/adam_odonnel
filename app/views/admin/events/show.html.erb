@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>What:</strong>
+  <%= @admin_event.what %>
+</p>
+
+<p>
+  <strong>What more:</strong>
+  <%= @admin_event.what_more %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <%= @admin_event.image %>
+</p>
+
+<p>
+  <strong>When:</strong>
+  <%= @admin_event.when %>
+</p>
+
+<%= link_to 'Edit', edit_admin_event_path(@admin_event), :class=>"btn btn-default" %>
+<%= link_to 'Back', admin_events_path, :class=>"btn btn-default" %>

@@ -1,0 +1,15 @@
+{{#if loc}}
+<iframe class='location' frameBorder='0' src="https://www.google.com/maps/embed/v1/directions?key=AIzaSyA4KyGJnJqs6-fIOaLRkmzgSPUgwUFrouI&&origin={{unbound loc}}&destination=11330 Graham Pl, Los Angeles, CA 90064"></iframe>
+{{else}}
+{{loading-ticker}}
+{{/if}}
+<style type="text/css">
+.location {
+	width: 100%;
+	height: 100%;
+	margin-top: -1.5em;
+}
+.ember-view {
+	height: 100%;
+}
+</style>

@@ -19,6 +19,7 @@
 //= require_self
 //= require_tree ./icheck
 //= require ./adam_odonnel
+//= require select2.min
 
 function guid() {
   function s4() {
@@ -28,6 +29,13 @@ function guid() {
   }
   return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
          s4() + '-' + s4() + s4() + s4();
+}
+
+function merge_options(obj1,obj2){
+    var obj3 = {};
+    for (var attrname in obj1) { obj3[attrname] = obj1[attrname]; }
+    for (var attrname in obj2) { obj3[attrname] = obj2[attrname]; }
+    return obj3;
 }
 
 // for more details see: http://emberjs.com/guides/application/

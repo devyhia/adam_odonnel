@@ -17,6 +17,7 @@ module RestAPI
 				end
 
 				def show
+					sleep 1.seconds
 					klass = #{klass}.find(params[:id])
 					render json: klass.json
 				end 

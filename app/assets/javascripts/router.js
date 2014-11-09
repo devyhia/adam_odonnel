@@ -10,4 +10,6 @@ AdamOdonnel.Router.map(function() {
   });
 
   this.resource('newsletter');
+  this.resource('contact');
+  this.resource('directions');
 });

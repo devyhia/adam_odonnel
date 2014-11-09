@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141006153240) do
+ActiveRecord::Schema.define(version: 20141020041817) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,23 @@ ActiveRecord::Schema.define(version: 20141006153240) do
     t.text     "what_more"
     t.string   "image"
     t.datetime "when"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "form_items", force: true do |t|
+    t.string   "name"
+    t.integer  "tag"
+    t.string   "placeholder"
+    t.integer  "page_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "data"
+  end
+
+  create_table "form_responses", force: true do |t|
+    t.integer  "page_id"
+    t.text     "json"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -36,6 +53,15 @@ ActiveRecord::Schema.define(version: 20141006153240) do
     t.boolean  "has_special_events"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "page_templates", force: true do |t|
+    t.string   "title"
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "link"
+    t.integer  "page_type"
   end
 
   create_table "realtors", force: true do |t|

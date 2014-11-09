@@ -62,6 +62,7 @@ GEM
     hublot (0.0.6)
       rails (> 3.0.0)
     i18n (0.6.11)
+    indexable_attribute (0.0.8)
     jbuilder (1.5.3)
       activesupport (>= 3.0.0)
       multi_json (>= 1.2.0)
@@ -140,6 +141,7 @@ DEPENDENCIES
   binding_of_caller
   ember-rails
   hublot
+  indexable_attribute
   jbuilder (~> 1.2)
   jquery-rails
   model_serializer (~> 0.0.2)

@@ -1,0 +1,28 @@
+<div class='pull-right'>
+  <%= link_to 'New Form', new_admin_form_path, :class=>"btn btn-lg btn-primary" %>
+</div>
+<h1>Forms</h1>
+
+<table class='table table-striped'>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Link</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @admin_forms.each do |admin_form| %>
+      <tr>
+        <td><%= admin_form.title %></td>
+        <td><%= admin_form.link %></td>
+        <td class='text-right'>
+          <%= link_to 'Show', admin_form_path(admin_form), :class=>"btn btn-default btn-xs" %>
+          <%= link_to 'Edit', edit_admin_form_path(admin_form), :class=>"btn btn-default btn-xs" %>
+          <%= link_to 'Destroy', admin_form_path(admin_form), method: :delete, data: { confirm: 'Are you sure?' }, :class=>"btn btn-default btn-xs" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

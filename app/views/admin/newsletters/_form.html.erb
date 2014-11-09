@@ -1,0 +1,49 @@
+<%= form_for(@admin_newsletter) do |f| %>
+  <% if @admin_newsletter.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@admin_newsletter.errors.count, "error") %> prohibited this admin_newsletter from being saved:</h2>
+
+      <ul>
+      <% @admin_newsletter.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name, :class=>"form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br>
+    <%= f.text_field :email, :class=>"form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label :birthdate %><br>
+    <%= f.text_field :birthdate, :class=>"form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label :zip %><br>
+    <%= f.text_field :zip, :class=>"form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label :country %><br>
+    <%= f.text_field :country, :class=>"form-control" %>
+  </div>
+  <div class="field">
+    <%= f.check_box :has_mortgage_news %>&nbsp;
+    <%= f.label :has_mortgage_news %>
+  </div>
+  <div class="field">
+    <%= f.check_box :has_interest_rate_updates %>&nbsp;
+    <%= f.label :has_interest_rate_updates %>
+  </div>
+  <div class="field">
+    <%= f.check_box :has_special_events %>&nbsp;
+    <%= f.label :has_special_events %>
+  </div>
+  <div class="actions">
+    <%= f.submit :class=>"btn btn-primary" %>
+  </div>
+<% end %>

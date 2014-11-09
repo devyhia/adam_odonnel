@@ -1,0 +1,120 @@
+<style type="text/css">
+#flds > div {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+.se2 {
+  width: 100%;
+}
+</style>
+<script type="text/x-handlebars-template" id="item-select">
+<div class='row'>
+  <input name='field[{{btn_id}}][tag]' value='select' type='hidden'>
+  <div class='col-xs-1'>
+    <button id="{{btn_id}}" type='button' class='btn btn-danger remove_field'>X</button>
+  </div>
+  <div class='col-xs-3'>
+    <input name='field[{{btn_id}}][name]' placeholder="Name" value='{{name}}' class='form-control'>
+  </div>
+  <div class='col-xs-4'>
+    <input name='field[{{btn_id}}][placeholder]' placeholder="Placeholder" value='{{placeholder}}' class='form-control'>
+  </div>
+  <div class='col-xs-4'>
+    <input id='{{id}}' class='se2' name='field[{{btn_id}}][data]'>
+  </div>
+</div>
+</script>
+<script type="text/x-handlebars-template" id="item-textfield">
+<div class='row'>
+  <input name='field[{{btn_id}}][tag]' value='textfield' type='hidden'>
+  <div class='col-xs-1'>
+    <button id="{{btn_id}}" type='button' class='btn btn-danger remove_field'>X</button>
+  </div>
+  <div class='col-xs-5'>
+    <input name='field[{{btn_id}}][name]' placeholder="Name" value='{{name}}' class='form-control'>
+  </div>
+  <div class='col-xs-6'>
+    <input name='field[{{btn_id}}][placeholder]' placeholder="Placeholder" value='{{placeholder}}' class='form-control'>
+  </div>
+</div>
+</script>
+<%= form_for(@admin_form, url: @url) do |f| %>
+  <% if @admin_form.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@admin_form.errors.count, "error") %> prohibited this admin_form from being saved:</h2>
+
+      <ul>
+      <% @admin_form.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title, :class=>"form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label :content %><br>
+    <%= f.text_area :content, id: 'txtContent', :class=>"form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label :link %><br>
+    <%= f.text_field :link, :class=>"form-control" %>
+  </div>
+  <div class='field'>
+    <button id='btnAddTextField' type='button' class='btn btn-primary'>Add Text Field</button> 
+    <button id='btnAddSelect' type='button' class='btn btn-primary'>Add Select Box</button>
+    <div id='flds'>
+    </div>
+  </div>
+  <div class="actions">
+    <%= f.submit :class=>"btn btn-danger" %>
+  </div>
+<% end %>
+<script>
+  // Replace the <textarea id="editor1"> with a CKEditor
+  // instance, using default configuration.
+  CKEDITOR.replace( 'txtContent' );
+</script>
+<script type="text/javascript">
+  function add_field(type, data) {
+    var id = guid();
+    var btn_id = guid();
+    var source   = $("#item-"+type).html();
+    var template = Handlebars.compile(source);
+    if(data == undefined) data = {};
+    var src = { id: id, btn_id: btn_id };
+    $('#flds').append(template(merge_options(src, data)));
+    $("#"+btn_id).click(remove_field);
+    if(type=="select") {
+      $('#'+id).select2({
+        tags: [],
+        placeholder: 'Items'
+      });
+      $('#'+id).select2("val", data["data"] == undefined ? [] : data["data"]);
+    }
+      
+    return merge_options(src, data);
+  }
+
+  $('#btnAddSelect').click(function() {
+    add_field("select");
+  });
+
+  $('#btnAddTextField').click(function() {
+    add_field("textfield");
+  });
+
+  function remove_field() {
+    console.log('triggered click!');
+    var me = $(this);
+    me.parent().parent().remove();
+  }
+</script>
+<script type="text/javascript">
+<% @admin_form.form_items.each do |item| %>
+  add_field("<%= item.tag.to_s %>", <%= raw item.js_hash %>);
+<% end %>
+</script>

@@ -4,4 +4,10 @@ class Newsletter < ActiveRecord::Base
 	end
 
 	json *params
+
+	after_create {
+		has_mortgage_news = true unless has_mortgage_news
+		has_special_events = true unless has_special_events
+		has_interest_rate_updates = true unless has_interest_rate_updates
+	}
 end

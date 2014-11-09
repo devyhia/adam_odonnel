@@ -1,0 +1,30 @@
+<div class='pull-right'>
+  <%= link_to 'New Newsletter', new_admin_newsletter_path, :class=>"btn btn-lg btn-primary" %>
+</div>
+<h1>Newsletters</h1>
+
+<table class='table <%= link_to 'New Page', new_admin_page_path %>'>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Country</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @admin_newsletters.each do |admin_newsletter| %>
+      <tr>
+        <td><%= admin_newsletter.name %></td>
+        <td><%= admin_newsletter.email %></td>
+        <td><%= admin_newsletter.country %></td>
+        <td class='text-right'>
+          <%= link_to 'Show', admin_newsletter_path(admin_newsletter), :class=>'btn btn-default btn-xs' %>
+          <%= link_to 'Edit', edit_admin_newsletter_path(admin_newsletter), :class=>'btn btn-default btn-xs' %>
+          <%= link_to 'Destroy', admin_newsletter_path(admin_newsletter), method: :delete, data: { confirm: 'Are you sure?' }, :class=>'btn btn-default btn-xs' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

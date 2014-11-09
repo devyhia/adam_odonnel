@@ -1,3 +1,11 @@
+<script type="text/x-handlebars" data-template-name="components/navbar-header">
+<style type="text/css">
+.back-btn {
+  width: 43px;
+  height: 33px;
+  line-height: 0;
+}
+</style>
 <div class="navbar navbar-default navbar-fixed-top">
   <div class="navbar-header">
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
@@ -5,6 +13,11 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
+    {{#if hasHistory}}
+    <button {{action 'goBack'}} class='navbar-toggle back-btn visible-xs pull-right'>
+      <i class='glyphicon glyphicon-circle-arrow-left'></i>
+    </button>
+    {{/if}}
     {{#link-to 'index' class='navbar-brand'}}Guranteed Rate{{/link-to}}
   </div>
   <div id='col-navbar' class="navbar-collapse collapse navbar-responsive-collapse">
@@ -18,7 +31,16 @@
       {{#link-to 'newsletter' tagName='li'}}
         <a href="#/newsletter">Newsletter</a>
       {{/link-to}}
+      {{#link-to 'contact' tagName='li'}}
+        <a href="#/contact">Contact Us</a>
+      {{/link-to}}
+      <% PageTemplate.all.each do |t| %>
+      {{#link-to '<%= t.link %>' tagName='li'}}
+        <a href="#/<%= t.link %>"><%= t.title %></a>
+      {{/link-to}}
+      <% end %>
     </ul>
   </div>
 </div>
 <div style='height: 54px; margin-bottom: 1.5em;'></div>
+</script>

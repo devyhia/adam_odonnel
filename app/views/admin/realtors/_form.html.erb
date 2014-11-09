@@ -1,0 +1,33 @@
+<%= form_for(@admin_realtor) do |f| %>
+  <% if @admin_realtor.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@admin_realtor.errors.count, "error") %> prohibited this admin_realtor from being saved:</h2>
+
+      <ul>
+      <% @admin_realtor.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :image %><br>
+    <%= f.text_field :image, :class=>"form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title, :class=>"form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label :more %><br>
+    <%= f.text_field :more, :class=>"form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label :url %><br>
+    <%= f.text_field :url, :class=>"form-control" %>
+  </div>
+  <div class="actions">
+    <%= f.submit :class=>"btn btn-primary" %>
+  </div>
+<% end %>
